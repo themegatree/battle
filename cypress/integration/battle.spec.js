@@ -4,7 +4,9 @@ describe('battle game user interactions', () => {
     cy.get("#p1-name").type('Colin');
     cy.get("#p2-name").type('Lottie');
     cy.get("#start").click()
-    cy.get("#p1-hit")
+    // change to new page
+    cy.get("#p1-display-name").should('contain','Colin')
+    cy.get("#p2-display-name").should('contain','Lottie')
   });
 
 });
