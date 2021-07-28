@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const Attack = require('./js functionality/attack')
-const postAttack = require('./js functionality/postAttack')
+const Game = require('./src/Game')
 
 //viewengine
 app.set('viewengine','ejs');
@@ -13,17 +13,32 @@ app.get('/', (req, res) => {
 })
 
 app.post('/battle',(req,res) => {
-  //Other res methods - res.send?
+
+  const game = new Game(req.body.p1Name, req.body.p2Name)
+
   res.render('battle.ejs', {
-    p1Name: req.body.p1Name,
-    p2Name: req.body.p2Name,
+    p1Name: game.p1.name,
+    p2Name: game.p2.name,
+    p1hp: game.p1.hp,
+    p2hp: game.p2.hp,
     attackMessage: ''
   })
 })
 
+app.post('/battle-attack',(req,res) => {
+  //Other res methods - res.send?
+  console.log('battle attack page')
+  attacks.push(Attack())
+  res.render('battle-attack.ejs', {
+    p1Name: p1,
+    p2Name: p2,
+    attackMessage: attacks
+  })
+})
+
 // Put the post request into a function?
-app.post('/battle-update', postAttack()
-});
+// app.post('/battle-update', postAttack()
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

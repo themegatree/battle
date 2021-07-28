@@ -4,7 +4,7 @@
   "description": "Implement the battle project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/FractalFraction/battle#readme",
   "devDependencies": {
-    "cypress": "^8.0.0"
+    "cypress": "^8.0.0",
+    "jasmine": "^3.8.0"
   },
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
   }
 }

@@ -1,15 +1,16 @@
 <h1 >Battle page</h1>
 <div>
-    <p id = p1-display-name>Player 1: <%= p1Name %></p><br>  
-    <p id = p1-hp>100</p>
+    <p id = p1-display-name>Player 1: <%= p1Name %></p> 
+    <p id = p1-hp><%= `Player 1 hp: ${p1hp}` %></p>
 </div>
+<br> 
 <div>
      <p id = p2-display-name><%= `Player 2: ${p2Name}` %></p>
-     <p id = p2-hp>100</p>
+     <p id = p2-hp><%= `Player 2 hp: ${p2hp}` %></p>
 </div>
 <div>
 
-<form action="/battle-update" method="post"></form>    
+<form action="/battle-attack" method="post">  
     <input type="submit" id = "attack" value="attack!">
 </form>   
 
