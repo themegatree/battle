@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const Attack = require('./js functionality/attack')
-const Game = require('./src/Game')
+const Attack = require('./js functionality/attack');
+const Game = require('./src/Game');
+
+let game = new Game();
 
 //viewengine
 app.set('viewengine','ejs');
@@ -14,25 +16,30 @@ app.get('/', (req, res) => {
 
 app.post('/battle',(req,res) => {
 
-  const game = new Game(req.body.p1Name, req.body.p2Name)
+  //game = new Game(req.body.p1Name, req.body.p2Name)
+  game.start(req.body.p1Name, req.body.p2Name);
 
   res.render('battle.ejs', {
     p1Name: game.p1.name,
     p2Name: game.p2.name,
     p1hp: game.p1.hp,
     p2hp: game.p2.hp,
-    attackMessage: ''
+    attackLog: ''
   })
 })
 
 app.post('/battle-attack',(req,res) => {
   //Other res methods - res.send?
-  console.log('battle attack page')
-  attacks.push(Attack())
+  //console.log('battle attack page')
+  game.attack()
+  console.log(game.p1.name)
+  console.log(game.p2.name)
+  console.log(game.attackLog)
+
   res.render('battle-attack.ejs', {
-    p1Name: p1,
-    p2Name: p2,
-    attackMessage: attacks
+    p1Name: game.p1.name,
+    p2Name: game.p2.name,
+    attackLog: game.attackLog
   })
 })
 

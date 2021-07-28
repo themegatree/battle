@@ -8,12 +8,16 @@ describe('battle game user interactions', () => {
     cy.get("#p1-display-name").should('contain','Colin')
     cy.get("#p2-display-name").should('contain','Lottie')
 
-
     // ***** <NEW IT> wish they could be seperate its ******
 
     // cy.visit('/battle')
     cy.get("#p1-hp").should('contain', 'Player 1 hp: 100');
     cy.get("#p2-hp").should('contain', 'Player 2 hp: 100');
+
+   // ***** <NEW IT> wish they could be seperate its ******
+
+    cy.get("#attack-button").click();
+    cy.get("#attack-log").should('contain','Colin attacks Lottie');
 
   });
 
