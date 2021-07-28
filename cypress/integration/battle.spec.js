@@ -18,7 +18,9 @@ describe('battle game user interactions', () => {
 
     cy.get("#attack-button").click();
     cy.get("#attack-log").should('contain','Colin attacks Lottie');
+// new it
 
+    cy.get("#p2-hp").should('contain', 'Player 2 hp: 90')
   });
 
   // it('shows starting hitpoints' , () => {

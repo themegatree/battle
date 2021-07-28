@@ -24,7 +24,7 @@ app.post('/battle',(req,res) => {
     p2Name: game.p2.name,
     p1hp: game.p1.hp,
     p2hp: game.p2.hp,
-    attackLog: ''
+    attackLog: game.attackLog
   })
 })
 
@@ -36,9 +36,11 @@ app.post('/battle-attack',(req,res) => {
   console.log(game.p2.name)
   console.log(game.attackLog)
 
-  res.render('battle-attack.ejs', {
+  res.render('battle.ejs', {
     p1Name: game.p1.name,
     p2Name: game.p2.name,
+    p1hp: game.p1.hp,
+    p2hp: game.p2.hp,
     attackLog: game.attackLog
   })
 })

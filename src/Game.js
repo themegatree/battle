@@ -22,6 +22,7 @@ class Game{
 
   attack () {
   //console.log("Attack!")
+  this.p2.hp = this.p2.hp - 10
   this.attackLog.push(`${this.p1.name} attacks ${this.p2.name}`)
   //return `${this.p1.name} attacks ${this.p2.name}`
     }    
