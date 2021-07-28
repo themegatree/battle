@@ -18,9 +18,17 @@ describe('battle game user interactions', () => {
 
     cy.get("#attack-button").click();
     cy.get("#attack-log").should('contain','Colin attacks Lottie');
-// new it
+     
+    // ***** <NEW IT> wish they could be seperate its ******
 
     cy.get("#p2-hp").should('contain', 'Player 2 hp: 90')
+
+    // ***** <NEW IT> wish they could be seperate its ******
+
+    cy.get('#turn-tracker').should('contain','Lottie')
+    cy.get("#attack-button").click();
+    cy.get('#turn-tracker').should('contain','Colin')
+    cy.get("#attack-log").should('contain','Lottie attacks Colin');
   });
 
   // it('shows starting hitpoints' , () => {

@@ -12,7 +12,11 @@
 
 <form action="/battle-attack" method="post">  
     <input type="submit" id = "attack-button" value="attack!">
-</form>   
+</form> 
+
+<p id= turn-tracker> <%= turnName %> you must click attack now </p>
+
+
 </div>
 <ul  id= attack-log>
     <% attackLog.forEach(function(item,index){ %>
