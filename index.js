@@ -21,9 +21,17 @@ app.post('/battle',(req,res) => {
   })
 })
 
+app.post('/battle-update', (req,res) => {
+    res.render('battle.ejs', {
+      p1Name: req.body.p1Name,
+      p2Name: req.body.p2Name,
+      attackMessage: Attack()
+    })
+  })
+
 // Put the post request into a function?
-app.post('/battle-update', postAttack()
-});
+// app.post('/battle-update', postAttack()
+// );
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
