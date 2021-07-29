@@ -1,1 +1,9 @@
-<h1><%= outcome %> </h1>
+<h1 id="lose-message"><%= outcome %> </h1>
+<form 
+action="/results"
+ method="post">
+    <input type="submit"
+        id="restart"
+        name="Restart"
+        value="Restart"/>
+</form>

@@ -16,7 +16,6 @@ describe('Battle Game logic', () => {
     })
 
     it('alocate 100hp each', () => {
-
         expect(game.p1.hp).toEqual(100)
     })
 
@@ -37,14 +36,8 @@ describe('Battle Game logic', () => {
     })
 
     it('reach 0HP display lose message',()=>{
-        //const lose () => {'lose'}
-        console.log(`Player 2 HP: ${game.p2.hp}`)
         game.p2.hp = 10;
-        console.log(`Player 2 HP: ${game.p2.hp}`)
-        console.log(game.gameStatus)
         game.attack(); //p1 attacks
-        console.log(`Player 2 HP: ${game.p2.hp}`)
-        console.log(game.gameStatus)
         expect(game.gameStatus).toEqual(false);
     })
 

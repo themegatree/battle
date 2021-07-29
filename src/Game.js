@@ -6,7 +6,7 @@ class Game{
         };
         this.p2 = {
             name: '',
-            hp: 100
+        hp: 100
         };
         this.attackLog = [];
         // whoevers in pos 0 its their turn
@@ -18,8 +18,6 @@ class Game{
         this.p1.name = p1;
         this.p2.name = p2;
         this.turnTracker = [this.p1,this.p2]
-        this.p1.hp = 100;
-        this.p2.hp = 100;
         this.attackLog = [];
     }
 
@@ -30,22 +28,15 @@ class Game{
         if (this.turnTracker[1].hp < 1) {
             return this.lose()
         }
-
         //Happen at end
          this.switchTurn()
-
     }   
 
     lose () {
-        // console.log('You lose, you get nothing!')
         this.gameStatus = false;
-        return `${this.turnTracker[0]} has beaten ${this.turnTracker[1]}`
     }
 
-    switchTurn() {
-        this.turnTracker.reverse()
-    }
-
+    switchTurn() {this.turnTracker.reverse()}
 }
 
-module.exports = Game
+module.exports = Game;
