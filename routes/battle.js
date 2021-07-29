@@ -4,9 +4,9 @@ const Game = require('../src/Game');
 
 router.post('/',(req,res) => {
     const game = new Game();
-    console.log(req.body.p1Name)
     game.start(req.body.p1Name, req.body.p2Name);
-  
+    req.app.locals.game = game;
+
     res.render('battle.ejs', {
       p1Name: game.p1.name,
       p2Name: game.p2.name,

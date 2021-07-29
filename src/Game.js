@@ -26,13 +26,8 @@ class Game{
     attack () {
         this.turnTracker[1].hp -= 10
         this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
-       
-
-        console.log(`TurnTrackerHP: ${this.turnTracker[1].hp}`)
 
         if (this.turnTracker[1].hp < 1) {
-            console.log(`TurnTrackerHP: ${this.turnTracker[1].hp}`)
-            console.log('Lose')
             return this.lose()
         }
 
@@ -42,7 +37,7 @@ class Game{
     }   
 
     lose () {
-        console.log('You lose, you get nothing!')
+        // console.log('You lose, you get nothing!')
         this.gameStatus = false;
         return `${this.turnTracker[0]} has beaten ${this.turnTracker[1]}`
     }

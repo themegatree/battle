@@ -1,23 +1,24 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const Attack = require('./js functionality/attack');
-const Game = require('./src/Game');
+
+//const Attack = require('./js functionality/attack');
+//const Game = require('./src/Game');
 
 //routers
 const indexRouter = require('./routes/index.js');
 const battleRouter = require('./routes/battle.js');
-// const battleAttackRouter = require('./routes/battle-attack.js');
+const battleAttackRouter = require('./routes/battle-attack.js');
 
-let game = new Game();
+//let game = new Game();
 
 //viewengine
 app.set('viewengine','ejs');
 app.use(express.urlencoded({extended: true}));
 
 app.use('/', indexRouter);
-
 app.use('/battle', battleRouter);
+app.use('/battle-attack', battleAttackRouter);
 
 // app.post('/battle',(req,res) => {
 
@@ -38,28 +39,29 @@ app.use('/battle', battleRouter);
 //   })
 // })
 // <p id= turn-tracker> <%= turnName %> you must click attack now </p>
-app.post('/battle-attack',(req,res) => {
-  const game = req.app.locals.game;
-  //Other res methods - res.send?
-  //console.log('battle attack page')
-  game.attack()
-  // console.log(game.p1.name)
-  // console.log(game.p2.name)
-  // console.log(game.attackLog)
 
-  // if (game.gameStatus === false) {
-  //   lose: game.lose
-  // };
-  res.render('battle.ejs', {
-    p1Name: game.p1.name,
-    p2Name: game.p2.name,
-    p1hp: game.p1.hp,
-    p2hp: game.p2.hp,
-    attackLog: game.attackLog,
-    turnName: game.turnTracker[0].name,
-    gameStatus: `The game is in progress: ${game.gameStatus.toString()}`
-  })
-})
+// app.post('/battle-attack',(req,res) => {
+//   const game = req.app.locals.game;
+//   //Other res methods - res.send?
+//   //console.log('battle attack page')
+//   game.attack()
+//   // console.log(game.p1.name)
+//   // console.log(game.p2.name)
+//   // console.log(game.attackLog)
+
+//   // if (game.gameStatus === false) {
+//   //   lose: game.lose
+//   // };
+//   res.render('battle.ejs', {
+//     p1Name: game.p1.name,
+//     p2Name: game.p2.name,
+//     p1hp: game.p1.hp,
+//     p2hp: game.p2.hp,
+//     attackLog: game.attackLog,
+//     turnName: game.turnTracker[0].name,
+//     gameStatus: `The game is in progress: ${game.gameStatus.toString()}`
+//   })
+// })
 
 // Put the post request into a function?
 // app.post('/battle-update', postAttack()
