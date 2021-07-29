@@ -1,13 +1,19 @@
+const Player = require('./Player.js')
+
 class Game{
-    constructor(){
-        this.p1 = {
-            name: '',
-            hp: 100
-        };
-        this.p2 = {
-            name: '',
-        hp: 100
-        };
+    constructor(playerClass = Player){
+        this.p1 = new playerClass();
+        this.p2 = new playerClass();
+        
+        // {
+        //     name: '',
+        //     hp: 100
+        // };
+        // this.p2 = {
+        //     name: '',
+        // hp: 100
+        // };
+
         this.attackLog = [];
         // whoevers in pos 0 its their turn
         this.turnTracker = []
@@ -15,8 +21,9 @@ class Game{
     }
 
     start (p1,p2) {
-        this.p1.name = p1;
-        this.p2.name = p2;
+        this.p1.setName(p1);
+        this.p2.setName(p2);
+
         this.turnTracker = [this.p1,this.p2]
         this.attackLog = [];
     }

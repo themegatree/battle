@@ -1,17 +1,30 @@
 const Game = require('../src/Game')
 
+class TestPlayer {
+   constructor(){
+     this.name = ''; 
+     this.hp = 100;
+   }
+   setName(name) {
+     this.name = name;
+   }
+}
+
 
 describe('Battle Game logic', () => {
 
     let game
     beforeEach(() => {
-        game = new Game()
+        game = new Game(TestPlayer)
         game.start('Colin', 'Lottie')
         return game
     })
    
     
     it('create players with names', () => {
+        console.log(1)
+        console.log(game.p1)
+        console.log(game.p1.name)
         expect(game.p1.name).toEqual('Colin')
     })
 
@@ -30,6 +43,9 @@ describe('Battle Game logic', () => {
 
     it('switches turn after attack', () =>{
         game.switchTurn()
+        console.log(2)
+        console.log(game.turnTracker[0])
+        console.log(game.turnTracker[0].name)
         expect(game.turnTracker[0].name).toEqual('Lottie')
     })
 
