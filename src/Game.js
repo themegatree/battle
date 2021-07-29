@@ -1,7 +1,8 @@
 const Player = require('./Player.js')
+const Attack = require('./Attack.js')
 
 class Game{
-    constructor(playerClass = Player){
+    constructor(playerClass = Player, attackClass = Attack){
         this.p1 = new playerClass();
         this.p2 = new playerClass();
         
@@ -18,6 +19,8 @@ class Game{
         // whoevers in pos 0 its their turn
         this.turnTracker = []
         this.gameStatus = true;
+
+        this.attackClass = new attackClass();
     }
 
     start (p1,p2) {
@@ -32,8 +35,13 @@ class Game{
         return a + Math.floor(Math.random() * (b + 1 - a));
     }
 
+    //basicattack
+    //rangeattack
+    //poisonattack
+    //etc.
+
     attack () {
-        this.turnTracker[1].hp -= this.randomDamage(8,12);
+        this.turnTracker[1].hp -= this.attackClass.basicAttack();
 
         this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
 

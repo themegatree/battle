@@ -1,6 +1,5 @@
 const Player = require('../src/Player')
 
-
 describe('Battle Game logic', () => {
 
     let player
@@ -12,5 +11,4 @@ describe('Battle Game logic', () => {
       player.setName('Shiv')
       expect(player.name).toEqual('Shiv');
     })
-
   })

@@ -10,21 +10,22 @@ class TestPlayer {
    }
 }
 
+class TestAttack {
+    basicAttack() {return 10}
+ }
+
 
 describe('Battle Game logic', () => {
 
     let game
     beforeEach(() => {
-        game = new Game(TestPlayer)
+        game = new Game(TestPlayer, TestAttack)
         game.start('Colin', 'Lottie')
         return game
     })
    
     
     it('create players with names', () => {
-        console.log(1)
-        console.log(game.p1)
-        console.log(game.p1.name)
         expect(game.p1.name).toEqual('Colin')
     })
 
@@ -43,9 +44,6 @@ describe('Battle Game logic', () => {
 
     it('switches turn after attack', () =>{
         game.switchTurn()
-        console.log(2)
-        console.log(game.turnTracker[0])
-        console.log(game.turnTracker[0].name)
         expect(game.turnTracker[0].name).toEqual('Lottie')
     })
 
