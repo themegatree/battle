@@ -77,7 +77,8 @@ I want a gloriously styled user interface
 ```
 
 ### Self Made User Stoies
-
+```
 As a Player,
 So I can play another fun game of Battle,
 I want to go back to the home page after completing my game
+```
