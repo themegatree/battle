@@ -21,8 +21,13 @@ class Game{
         this.attackLog = [];
     }
 
+    randomDamage(a,b) {
+        return a + Math.floor(Math.random() * (b + 1 - a));
+    }
+
     attack () {
-        this.turnTracker[1].hp -= 10
+        this.turnTracker[1].hp -= this.randomDamage(8,12);
+
         this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
 
         if (this.turnTracker[1].hp < 1) {

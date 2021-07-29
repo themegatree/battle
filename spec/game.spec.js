@@ -20,6 +20,10 @@ describe('Battle Game logic', () => {
     })
 
     it('attack reduces hp by 10', () => {
+        spyOn(game,'randomDamage').and.callFake(function(a,b){
+          return 10;
+        });
+
         game.attack()
         expect(game.p2.hp).toEqual(90)
     })
@@ -30,12 +34,20 @@ describe('Battle Game logic', () => {
     })
 
     it('switching changes who attacks who', () =>{
+        spyOn(game,'randomDamage').and.callFake(function(a,b){
+            return 10;
+            });
+
         game.switchTurn()
         game.attack()
         expect(game.p1.hp).toEqual(90)
     })
 
     it('reach 0HP display lose message',()=>{
+        spyOn(game,'randomDamage').and.callFake(function(a,b){
+                return 10;
+                });
+
         game.p2.hp = 10;
         game.attack(); //p1 attacks
         expect(game.gameStatus).toEqual(false);

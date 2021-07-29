@@ -31,6 +31,7 @@ describe("One Click", () => {
     cy.get("#p2-name").type('Lottie');
     cy.get("#start").click();
     cy.get("#attack-button").click();
+    // Stub random damage to 10.
   })
 
 
@@ -56,7 +57,6 @@ describe("One Click", () => {
     cy.get("#p1-hp").should('contain', 'Player 1 hp: 90')
   })
   
-
 })
 
 describe("End game screen", () =>{
@@ -72,5 +72,26 @@ describe("End game screen", () =>{
     cy.get('#lose-message').should('contain','Colin has beaten Lottie') 
   })
 
-  it("SMUS1: Restart",() => {})
+  it("SMUS1: Restart",() => {
+    cy.get('#restart').click()
+    cy.get("#start")
+  })
+})
+
+
+describe("Random attacks", () => {
+
+  beforeEach(() => {
+    cy.visit('/');
+    cy.get("#p1-name").type('Colin');
+    cy.get("#p2-name").type('Lottie');
+    cy.get("#start").click();
+    cy.get("#attack-button").click();
+  })
+
+  // it('can do a random? attack' ,() => {
+  //   cy.stub("#p2-hp").as('79')
+  //   cy.get("#p2-hp").should('contain','79');
+  // })
+
 })
