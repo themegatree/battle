@@ -4,6 +4,10 @@ const router = express.Router();
 router.post('/',(req,res) => {
   const game = req.app.locals.game;
 
+  // Saves attack from form into a local variable
+  //const typeAttack = req.app.locals.attack
+  //game.attack(typeAttack)
+
   game.volleyAttack()
 
   if (game.gameStatus === false) {

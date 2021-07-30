@@ -40,14 +40,25 @@ class Game{
     //poisonattack
     //etc.
 
-    basicAttack() {this.attack(this.attackClass.basicAttack)}
+    basicAttack() {
+        console.log(this.attackClass.basicAttack)
+        this.attack(this.attackClass.basicAttack)}
 
     volleyAttack() {this.attack(this.attackClass.volleyAttack)}
+
+    sleepAttack() {      
+        this.attack(this.attackClass.sleepAttack);
+        //Chance to skip opponents turn 
+        if (Math.random() > 0.3){
+            this.attackLog(`Sleepy time, ${this.turnTracker[1].name}! (Skipped turn)`)
+            this.switchTurn()
+        }   
+    }
 
     attack (attackType) {
         this.turnTracker[1].hp -= attackType();
 
-        this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
+        this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name} with ${attackType.name}`)
 
         if (this.turnTracker[1].hp < 1) {
             return this.lose()

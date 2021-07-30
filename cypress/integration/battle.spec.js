@@ -24,7 +24,6 @@ xdescribe('Set-up', () => {
 
 xdescribe("One Click", () => {
 
-
   beforeEach(() => {
     cy.visit('/');
     cy.get("#p1-name").type('Colin');
@@ -32,7 +31,6 @@ xdescribe("One Click", () => {
     cy.get("#start").click();
     cy.get("#attack-button").click();
   })
-
 
   it("ACUS3: Confirm Hit", () => {
     cy.get("#attack-log").should('contain','Colin attacks Lottie');
@@ -97,7 +95,9 @@ describe("attack types", () => {
     cy.get("#volley-button").should('contain', 'Volley');
   })
 
+  it("EAUS6: Sleep Button", () => {
+    cy.get("#sleep-button").should('contain', 'Sleep Attack');
+  })
+
 
 })
-
-
