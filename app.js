@@ -6,6 +6,7 @@ const port = 3000
 const indexRouter = require('./routes/index.js');
 const battleRouter = require('./routes/battle.js');
 const battleAttackRouter = require('./routes/battle-attack.js');
+const volleyAttackRouter = require('./routes/battle-volley.js');
 const resultsRouter = require('./routes/results.js');
 
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/', indexRouter);
 app.use('/battle', battleRouter);
 app.use('/battle-attack', battleAttackRouter);
+app.use('/battle-volley', volleyAttackRouter);
 app.use('/results', resultsRouter);
 
 app.listen(port, () => {

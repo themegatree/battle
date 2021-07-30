@@ -12,19 +12,15 @@ class TestPlayer {
 
 class TestAttack {
     basicAttack() {return 10}
+    volleyAttack() {return 27}
  }
 
-
-describe('Battle Game logic', () => {
-
-    let game
+describe("Game Spec: Set-up: ", () => {
     beforeEach(() => {
         game = new Game(TestPlayer, TestAttack)
         game.start('Colin', 'Lottie')
-        return game
     })
-   
-    
+
     it('create players with names', () => {
         expect(game.p1.name).toEqual('Colin')
     })
@@ -32,13 +28,20 @@ describe('Battle Game logic', () => {
     it('alocate 100hp each', () => {
         expect(game.p1.hp).toEqual(100)
     })
+})
+
+
+describe('GameSpec: Basic Attacks', () => {
+
+    let game
+    beforeEach(() => {
+        game = new Game(TestPlayer, TestAttack)
+        game.start('Colin', 'Lottie')
+    })
 
     it('attack reduces hp by 10', () => {
-        spyOn(game,'randomDamage').and.callFake(function(a,b){
-          return 10;
-        });
 
-        game.attack()
+        game.basicAttack()
         expect(game.p2.hp).toEqual(90)
     })
 
@@ -48,25 +51,45 @@ describe('Battle Game logic', () => {
     })
 
     it('switching changes who attacks who', () =>{
-        spyOn(game,'randomDamage').and.callFake(function(a,b){
-            return 10;
-            });
 
         game.switchTurn()
-        game.attack()
+        game.basicAttack()
         expect(game.p1.hp).toEqual(90)
     })
 
     it('reach 0HP display lose message',()=>{
-        spyOn(game,'randomDamage').and.callFake(function(a,b){
-                return 10;
-                });
 
         game.p2.hp = 10;
-        game.attack(); //p1 attacks
+        game.basicAttack(); //p1 attacks
         expect(game.gameStatus).toEqual(false);
     })
+})
 
+describe('GameSpec: Volley Attacks', () => {
 
+    let game
+    beforeEach(() => {
+        game = new Game(TestPlayer, TestAttack)
+        game.start('Colin', 'Lottie')
+    })
 
+    it('attack reduces hp by 10', () => {
+
+        game.volleyAttack()
+        expect(game.p2.hp).toEqual(73)
+    })
+
+    it('switching changes who attacks who', () =>{
+
+        game.switchTurn()
+        game.volleyAttack()
+        expect(game.p1.hp).toEqual(73)
+    })
+
+    it('reach 0HP display lose message',()=>{
+
+        game.p2.hp = 23;
+        game.volleyAttack(); //p1 attacks
+        expect(game.gameStatus).toEqual(false);
+    })
 })

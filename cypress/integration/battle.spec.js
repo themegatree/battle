@@ -1,4 +1,4 @@
-describe('Set-up', () => {
+xdescribe('Set-up', () => {
 
   beforeEach(() => {
     cy.visit('/');
@@ -22,7 +22,7 @@ describe('Set-up', () => {
   })
 })
 
-describe("One Click", () => {
+xdescribe("One Click", () => {
 
 
   beforeEach(() => {
@@ -59,13 +59,18 @@ describe("One Click", () => {
   
 })
 
-describe("End game screen", () =>{
+xdescribe("End game screen", () =>{
   beforeEach(() => {
     cy.visit('/');
     cy.get("#p1-name").type('Colin');
     cy.get("#p2-name").type('Lottie');
     cy.get("#start").click();
-    for (let i=0; i< 19; i++){cy.get("#attack-button").click()};
+
+     // not real code in the conditions brackets, 
+     //just here to explain what we are trying to do
+    while (cy.get("#p1-hp".exists)){
+      cy.get("#attack-button").click()
+    }
   })
 
   it("ACUS9: Loss Message", ()=> {
@@ -86,7 +91,13 @@ describe("attack types", () => {
     cy.get("#p1-name").type('Colin');
     cy.get("#p2-name").type('Lottie');
     cy.get("#start").click();
-    cy.get("#attack-button").click();
   })
 
+  it("EAUS3: Volley Button", () => {
+    cy.get("#volley-button").should('contain', 'Volley');
+  })
+
+
 })
+
+

@@ -4,7 +4,7 @@ const router = express.Router();
 router.post('/',(req,res) => {
   const game = req.app.locals.game;
 
-  game.basicAttack()
+  game.volleyAttack()
 
   if (game.gameStatus === false) {
     res.render('results.ejs', {

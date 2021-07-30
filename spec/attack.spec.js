@@ -13,4 +13,9 @@ describe('Attack Logic', () => {
             });
         expect(attack.basicAttack()).toEqual(10)
     })
+
+    it('Output attack number', () => {
+        spyOn(attack,'randomDamage').and.callFake(function(a,b){return 3});        
+        expect(attack.volleyAttack()).toEqual(9)
+    })
   })

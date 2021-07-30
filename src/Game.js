@@ -31,17 +31,21 @@ class Game{
         this.attackLog = [];
     }
 
-    randomDamage(a,b) {
-        return a + Math.floor(Math.random() * (b + 1 - a));
-    }
+    // randomDamage(a,b) {
+    //     return a + Math.floor(Math.random() * (b + 1 - a));
+    // }
 
     //basicattack
     //rangeattack
     //poisonattack
     //etc.
 
-    attack () {
-        this.turnTracker[1].hp -= this.attackClass.basicAttack();
+    basicAttack() {this.attack(this.attackClass.basicAttack)}
+
+    volleyAttack() {this.attack(this.attackClass.volleyAttack)}
+
+    attack (attackType) {
+        this.turnTracker[1].hp -= attackType();
 
         this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
 

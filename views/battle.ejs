@@ -1,4 +1,4 @@
-<h1 >Battle page</h1>
+<h1 id="battle-heading">Battle page</h1>
 <h2> <%= gameStatus %> </h2>
 <div>
     <p id = p1-display-name>Player 1: <%= p1Name %></p> 
@@ -12,13 +12,17 @@
 <div>
 
 <form action="/battle-attack" method="post">  
-    <input type="submit" id = "attack-button" value="attack!">
+    <input type="submit" id ="attack-button" value="attack!">
 </form> 
 
+<form action="/battle-volley" method="post">
+    <input type="submit" id = "volley-button" value="volley">
+</form>
+
 <p id= turn-tracker> <%= turnName %> you must click attack now </p>
-
-
 </div>
+
+
 <ul  id= attack-log>
     <% attackLog.forEach(function(item,index){ %>
         <li> <%= item %> </li>
